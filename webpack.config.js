@@ -6,12 +6,12 @@ const port = process.env.PORT || 8888
 
 const config = {
   devtool: 'cheap-eval-source-map',
-  context: path.join(__dirname, './demo'),
+  context: path.join(__dirname, './src'),
   entry: {
     demo: [
-      `webpack-dev-server/client?http://0.0.0.0:${port}`,
-      'webpack/hot/only-dev-server',
-      './index.ts'
+      // `webpack-dev-server/client?http://0.0.0.0:${port}`,
+      // 'webpack/hot/only-dev-server',
+      './demo/index.ts'
     ]
   },
   output: {

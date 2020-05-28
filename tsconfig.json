@@ -18,8 +18,8 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "react-calendar-timeline": ["./src/lib/"],
-      "react-calendar-timeline/*": ["./src/lib/*"]
+      "react-calendar-timeline": ["./src/"],
+      "react-calendar-timeline/*": ["./src/*"]
     }
   },
   "exclude": ["dist/**/*", "__tests__/**/*", "__fixtures__/**/*"]

@@ -33,6 +33,7 @@ import TimelineHeaders from './headers/TimelineHeaders'
 import DateHeader from './headers/DateHeader'
 import SidebarHeader from './headers/SidebarHeader'
 
+
 export default class ReactCalendarTimeline extends Component {
   public state: any;
   public props: any;
