@@ -225,7 +225,7 @@ export class CustomHeader extends React.Component {
 const CustomHeaderWrapper = ({ children, unit, headerData, height } : any) => (
   <TimelineStateConsumer>
     {({ getTimelineState, showPeriod, getLeftOffsetFromDate }) => {
-      const timelineState = getTimelineState()
+      const timelineState : any = getTimelineState()
       return (
         <TimelineHeadersConsumer>
           {({ timeSteps }) => (

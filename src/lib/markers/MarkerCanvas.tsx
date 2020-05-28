@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import PropTypes from 'prop-types'
 import { MarkerCanvasProvider } from './MarkerCanvasContext'
 import TimelineMarkersRenderer from './TimelineMarkersRenderer'
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
 
 // expand to fill entire parent container (ScrollElement)
-const staticStyles = {
+const staticStyles : CSSProperties = {
   position: 'absolute',
   left: 0,
   right: 0,
@@ -69,6 +69,7 @@ class MarkerCanvas extends React.Component {
 
   render() {
     return (
+      // @ts-ignore
       <MarkerCanvasProvider value={this.state}>
         <div
           style={staticStyles}

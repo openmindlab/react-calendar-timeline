@@ -77,6 +77,7 @@ export class TimelineMarkersProvider extends React.Component {
   }
 
   render() {
+    // @ts-ignore
     return <Provider value={this.state}>{this.props.children}</Provider>
   }
 }

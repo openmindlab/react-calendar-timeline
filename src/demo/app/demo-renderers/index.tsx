@@ -185,14 +185,14 @@ export default class App extends Component {
         items={items}
         keys={keys}
         sidebarWidth={150}
-        sidebarContent={<GroupRenderer />}
+        // sidebarContent={<GroupRenderer />}
         // rightSidebarWidth={150}
         // rightSidebarContent={<div>Above The Right</div>}
 
         canMove
         canResize="right"
         canSelect
-        itemsSorted
+        // itemsSorted
         itemTouchSendsClick={false}
         stackItems
         itemHeightRatio={0.75}

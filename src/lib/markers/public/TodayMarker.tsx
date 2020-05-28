@@ -54,7 +54,7 @@ class TodayMarker extends React.Component {
 const TodayMarkerWrapper = props => {
   return (
     <TimelineMarkersConsumer>
-      {({ subscribeMarker, updateMarker }) => (
+      {({ subscribeMarker, updateMarker } : any) => (
         <TodayMarker subscribeMarker={subscribeMarker} updateMarker={updateMarker} {...props} />
       )}
     </TimelineMarkersConsumer>

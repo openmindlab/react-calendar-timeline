@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import PropTypes from 'prop-types'
 import { getParentPosition } from '../utility/dom-helpers'
 
@@ -32,6 +32,7 @@ class ScrollElement extends Component {
   }
 
   constructor() {
+    // @ts-ignore
     super()
     this.state = {
       isDragging: false
@@ -194,7 +195,7 @@ class ScrollElement extends Component {
     const { width, height, children } = this.props
     const { isDragging } = this.state
 
-    const scrollComponentStyle = {
+    const scrollComponentStyle : CSSProperties = {
       width: `${width}px`,
       height: `${height + 20}px`, //20px to push the scroll element down off screen...?
       cursor: isDragging ? 'move' : 'default',

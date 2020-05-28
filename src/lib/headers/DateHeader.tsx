@@ -107,7 +107,7 @@ const DateHeaderWrapper = ({
 } : any) => (
   <TimelineStateConsumer>
     {({ getTimelineState }) => {
-      const timelineState = getTimelineState()
+      const timelineState : any = getTimelineState()
       return (
         <DateHeader
           timelineUnit={timelineState.timelineUnit}

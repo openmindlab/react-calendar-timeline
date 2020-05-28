@@ -8,7 +8,6 @@ const config = {
   devtool: 'cheap-eval-source-map',
   context: path.join(__dirname, './demo'),
   entry: {
-    // vendor: ['react', 'react-dom', 'faker', 'interactjs', 'moment'],
     demo: [
       `webpack-dev-server/client?http://0.0.0.0:${port}`,
       'webpack/hot/only-dev-server',
@@ -16,7 +15,7 @@ const config = {
     ]
   },
   output: {
-    path: path.join(__dirname, './build'),
+    path: path.join(__dirname, './dist'),
     publicPath: '',
     chunkFilename: '[name].bundle.js',
     filename: '[name].bundle.js'

@@ -47,7 +47,7 @@ class CustomMarker extends React.Component {
 const CustomMarkerWrapper = props => {
   return (
     <TimelineMarkersConsumer>
-      {({ subscribeMarker, updateMarker }) => (
+      {({ subscribeMarker, updateMarker } : any) => (
         <CustomMarker
           subscribeMarker={subscribeMarker}
           updateMarker={updateMarker}

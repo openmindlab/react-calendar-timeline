@@ -36,6 +36,7 @@ class CursorMarker extends React.Component {
   }
 
   constructor() {
+    // @ts-ignore
     super()
 
     this.state = {

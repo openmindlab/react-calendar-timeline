@@ -69,13 +69,13 @@ export default class App extends Component {
             items={items}
             keys={keys}
             sidebarWidth={150}
-            sidebarContent={<div>Above The Left er aew rawe rwea rwae</div>}
+            // sidebarContent={<div>Above The Left er aew rawe rwea rwae</div>}
             rightSidebarWidth={150}
-            rightSidebarContent={<div>Above The Right</div>}
+            // rightSidebarContent={<div>Above The Right</div>}
             canMove
             canResize="right"
             canSelect
-            itemsSorted
+            // itemsSorted
             itemTouchSendsClick={false}
             stackItems
             itemHeightRatio={0.75}

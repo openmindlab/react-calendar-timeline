@@ -176,11 +176,11 @@ export default class App extends Component {
           items={items}
           keys={keys}
           sidebarWidth={150}
-          sidebarContent={<div>Above The Left</div>}
+          // sidebarContent={<div>Above The Left</div>}
           canMove
           canResize="right"
           canSelect
-          itemsSorted
+          // itemsSorted
           itemTouchSendsClick={false}
           stackItems
           itemHeightRatio={0.75}
@@ -198,7 +198,7 @@ export default class App extends Component {
           onTimeChange={this.handleTimeChange}
           // moveResizeValidator={this.moveResizeValidator}
           rightSidebarWidth={150}
-          rightSidebarContent={<div>Above The Right</div>}
+          // rightSidebarContent={<div>Above The Right</div>}
         >
           <TimelineHeaders className="header-background">
             <SidebarHeader/>

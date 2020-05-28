@@ -148,7 +148,7 @@ export default class App extends Component {
           groups={groups}
           items={items}
           keys={keys}
-          fullUpdate
+          // fullUpdate
           itemTouchSendsClick={false}
           stackItems
           itemHeightRatio={0.75}
