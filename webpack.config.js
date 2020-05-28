@@ -11,7 +11,7 @@ const config = {
     demo: [
       // `webpack-dev-server/client?http://0.0.0.0:${port}`,
       // 'webpack/hot/only-dev-server',
-      './demo/index.ts'
+      './demo/index.tsx'
     ]
   },
   output: {
