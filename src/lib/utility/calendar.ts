@@ -402,7 +402,7 @@ export function stackAll(itemsDimensions, groupOrders, lineHeight, stackItems) {
       groupHeights.push(Math.max(groupHeight, lineHeight))
     }
   }
-  
+
   return {
     height: sum(groupHeights),
     groupHeights,
@@ -422,7 +422,7 @@ export function stackGroup(itemsDimensions, isGroupStacked, lineHeight, groupTop
   var verticalMargin = 0
   // Find positions for each item in group
   for (let itemIndex = 0; itemIndex < itemsDimensions.length; itemIndex++) {
-    let r = {}
+    let r: any = {}
     if (isGroupStacked) {
       r = groupStack(
         lineHeight,
@@ -564,7 +564,7 @@ export function getItemDimensions({
   itemHeightRatio
 }) {
   const itemId = _get(item, keys.itemIdKey)
-  let dimension = calculateDimensions({
+  let dimension: any = calculateDimensions({
     itemTimeStart: _get(item, keys.itemTimeStartKey),
     itemTimeEnd: _get(item, keys.itemTimeEndKey),
     canvasTimeStart,
@@ -670,7 +670,7 @@ export function calculateScrollCanvas(
   const oldCanvasTimeStart = state.canvasTimeStart
   const oldZoom = state.visibleTimeEnd - state.visibleTimeStart
   const newZoom = visibleTimeEnd - visibleTimeStart
-  const newState = { visibleTimeStart, visibleTimeEnd }
+  const newState: any = { visibleTimeStart, visibleTimeEnd }
 
   // Check if the current canvas covers the new times
   const canKeepCanvas =

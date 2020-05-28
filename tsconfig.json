@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "alwaysStrict": true,
+    "target": "es2019",
+    "removeComments": false,
+    "lib": ["es5", "es6", "dom"],
+    "jsx": "react",
+    "allowJs": true,
+    "declaration": false,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "react-calendar-timeline": ["./src/lib/"],
+      "react-calendar-timeline/*": ["./src/lib/*"]
+    }
+  },
+  "exclude": ["dist/**/*", "__tests__/**/*", "__fixtures__/**/*"]
+}

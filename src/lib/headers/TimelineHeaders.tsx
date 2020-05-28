@@ -116,7 +116,7 @@ const TimelineHeadersWrapper = ({
   className,
   calendarHeaderStyle,
   calendarHeaderClassName
-}) => (
+} : any) => (
   <TimelineHeadersConsumer>
     {({ leftSidebarWidth, rightSidebarWidth, registerScroll }) => {
       return (

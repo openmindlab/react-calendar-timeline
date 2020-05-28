@@ -104,7 +104,7 @@ const DateHeaderWrapper = ({
   intervalRenderer,
   headerData,
   height
-}) => (
+} : any) => (
   <TimelineStateConsumer>
     {({ getTimelineState }) => {
       const timelineState = getTimelineState()

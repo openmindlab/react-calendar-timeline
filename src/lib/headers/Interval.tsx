@@ -4,14 +4,14 @@ import { getNextUnit } from '../utility/calendar'
 import { composeEvents } from '../utility/events'
 
 class Interval extends React.PureComponent {
-	public props: any;
-	public primaryHeader: any;
-	public interval: any;
-	public unit: any;
-	public showPeriod: any;
-	public intervalText: any;
-	public intervalRenderer: any;
-	public headerData: any;
+  public props: any;
+  public primaryHeader: any;
+  public interval: any;
+  public unit: any;
+  public showPeriod: any;
+  public intervalText: any;
+  public intervalRenderer: any;
+  public headerData: any;
   static propTypes = {
     intervalRenderer: PropTypes.func,
     unit: PropTypes.string.isRequired,
@@ -35,7 +35,7 @@ class Interval extends React.PureComponent {
     }
   }
 
-  getIntervalProps = (props = {}) => {
+  getIntervalProps = (props: any = {}) => {
     return {
       ...this.props.getIntervalProps({
         interval: this.props.interval,
@@ -66,7 +66,7 @@ class Interval extends React.PureComponent {
         data-testid="dateHeaderInterval"
         {...this.getIntervalProps({
         })}
-        className={`rct-dateHeader ${this.props.primaryHeader? 'rct-dateHeader-primary' : ''}`}
+        className={`rct-dateHeader ${this.props.primaryHeader ? 'rct-dateHeader-primary' : ''}`}
       >
         <span>{intervalText}</span>
       </div>

@@ -118,8 +118,7 @@ export default class Items extends Component {
     const groupOrders = getGroupOrders(groups, keys)
     const visibleItems = this.getVisibleItems(
       canvasTimeStart,
-      canvasTimeEnd,
-      groupOrders
+      canvasTimeEnd
     )
     const sortedDimensionItems = keyBy(dimensionItems, 'id')
 

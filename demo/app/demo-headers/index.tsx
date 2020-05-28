@@ -216,7 +216,6 @@ export default class App extends Component {
                   showPeriod,
                   data,
                 },
-                
               ) => {
                 console.log('props', data)
                 return (

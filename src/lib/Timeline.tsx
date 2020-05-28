@@ -34,34 +34,34 @@ import DateHeader from './headers/DateHeader'
 import SidebarHeader from './headers/SidebarHeader'
 
 export default class ReactCalendarTimeline extends Component {
-	public state: any;
-	public props: any;
-	public lastTouchDistance: any;
-	public scrollComponent: any;
-	public scrollHeaderRef: any;
-	public container: any;
-	public setState: any;
-	public width: any;
-	public visibleTimeStart: any;
-	public visibleTimeEnd: any;
-	public canvasTimeStart: any;
-	public canvasTimeEnd: any;
-	public dimensionItems: any;
-	public height: any;
-	public groupHeights: any;
-	public groupTops: any;
-	public groups: any;
-	public containerWidth: any;
-	public minZoom: any;
-	public maxZoom: any;
-	public dragSnap: any;
-	public offsetX: any;
-	public scrollX: any;
-	public sidebarWidth: any;
-	public rightSidebarWidth: any;
-	public timeSteps: any;
-	public traditionalZoom: any;
-	public draggingItem: any;
+  public state: any;
+  public props: any;
+  public lastTouchDistance: any;
+  public scrollComponent: any;
+  public scrollHeaderRef: any;
+  public container: any;
+  public setState: any;
+  public width: any;
+  public visibleTimeStart: any;
+  public visibleTimeEnd: any;
+  public canvasTimeStart: any;
+  public canvasTimeEnd: any;
+  public dimensionItems: any;
+  public height: any;
+  public groupHeights: any;
+  public groupTops: any;
+  public groups: any;
+  public containerWidth: any;
+  public minZoom: any;
+  public maxZoom: any;
+  public dragSnap: any;
+  public offsetX: any;
+  public scrollX: any;
+  public sidebarWidth: any;
+  public rightSidebarWidth: any;
+  public timeSteps: any;
+  public traditionalZoom: any;
+  public draggingItem: any;
   static propTypes = {
     groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
@@ -240,14 +240,14 @@ export default class ReactCalendarTimeline extends Component {
     className: '',
     keys: defaultKeys,
     timeSteps: defaultTimeSteps,
-    headerRef: () => {},
-    scrollRef: () => {},
+    headerRef: () => { },
+    scrollRef: () => { },
 
     // if you pass in visibleTimeStart and visibleTimeEnd, you must also pass onTimeChange(visibleTimeStart, visibleTimeEnd),
     // which needs to update the props visibleTimeStart and visibleTimeEnd to the ones passed
     visibleTimeStart: null,
     visibleTimeEnd: null,
-    onTimeChange: function(
+    onTimeChange: function (
       visibleTimeStart,
       visibleTimeEnd,
       updateScrollCanvas
@@ -299,7 +299,7 @@ export default class ReactCalendarTimeline extends Component {
 
     this.getSelected = this.getSelected.bind(this)
     this.hasSelectedItem = this.hasSelectedItem.bind(this)
-    this.isItemSelected= this.isItemSelected.bind(this)
+    this.isItemSelected = this.isItemSelected.bind(this)
 
     let visibleTimeStart = null
     let visibleTimeEnd = null
@@ -439,7 +439,7 @@ export default class ReactCalendarTimeline extends Component {
         )
       )
     }
-    
+
     return derivedState
   }
 
@@ -466,13 +466,13 @@ export default class ReactCalendarTimeline extends Component {
     // Check the scroll is correct
     const scrollLeft = Math.round(
       this.state.width *
-        (this.state.visibleTimeStart - this.state.canvasTimeStart) /
-        newZoom
+      (this.state.visibleTimeStart - this.state.canvasTimeStart) /
+      newZoom
     )
     const componentScrollLeft = Math.round(
       prevState.width *
-        (prevState.visibleTimeStart - prevState.canvasTimeStart) /
-        oldZoom
+      (prevState.visibleTimeStart - prevState.canvasTimeStart) /
+      oldZoom
     )
     if (componentScrollLeft !== scrollLeft) {
       this.scrollComponent.scrollLeft = scrollLeft
@@ -604,7 +604,7 @@ export default class ReactCalendarTimeline extends Component {
     )
   }
 
-  selectItem = (item, clickType, e) => {
+  selectItem = (item, clickType: any, e) => {
     if (
       this.isItemSelected(item) ||
       (this.props.itemTouchSendsClick && clickType === 'touch')
@@ -727,7 +727,7 @@ export default class ReactCalendarTimeline extends Component {
     }
   }
 
-  updatingItem = ({ eventType, itemId, time, edge, newGroupOrder }) => {
+  updatingItem = ({ eventType, itemId, time, edge, newGroupOrder }: any) => {
     if (this.props.onItemDrag) {
       this.props.onItemDrag({ eventType, itemId, time, edge, newGroupOrder })
     }
@@ -758,7 +758,7 @@ export default class ReactCalendarTimeline extends Component {
   handleRowClick = (e, rowIndex) => {
     // shouldnt this be handled by the user, as far as when to deselect an item?
     if (this.hasSelectedItem()) {
-      this.selectItem(null)
+      this.selectItem(null, null, null)
     }
 
     if (this.props.onCanvasClick == null) return
@@ -902,10 +902,10 @@ export default class ReactCalendarTimeline extends Component {
    * refer to for explanation https://github.com/gaearon/react-hot-loader#checking-element-types 
    */
   isTimelineHeader = (child) => {
-    if(child.type === undefined) return false
-    return child.type.secretKey ===TimelineHeaders.secretKey
+    if (child.type === undefined) return false
+    return child.type.secretKey === TimelineHeaders.secretKey
   }
-  
+
   childrenWithProps(
     canvasTimeStart,
     canvasTimeEnd,
@@ -981,12 +981,12 @@ export default class ReactCalendarTimeline extends Component {
       : this.props.selected || [];
   }
 
-  hasSelectedItem(){
-    if(!Array.isArray(this.props.selected)) return !!this.state.selectedItem
+  hasSelectedItem() {
+    if (!Array.isArray(this.props.selected)) return !!this.state.selectedItem
     return this.props.selected.length > 0
   }
 
-  isItemSelected(itemId){
+  isItemSelected(itemId) {
     const selectedItems = this.getSelected()
     return selectedItems.some(i => i === itemId)
   }

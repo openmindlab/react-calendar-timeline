@@ -112,6 +112,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.2",
     "@babel/preset-env": "^7.5.2",
     "@babel/preset-react": "^7.0.0",
+    "@types/webpack-env": "1.15.2",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",

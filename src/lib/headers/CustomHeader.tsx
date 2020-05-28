@@ -5,25 +5,25 @@ import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
 import { iterateTimes, calculateXPositionForTime } from '../utility/calendar'
 
 export class CustomHeader extends React.Component {
-	public state: any;
-	public props: any;
-	public setState: any;
-	public canvasTimeStart: any;
-	public canvasTimeEnd: any;
-	public canvasWidth: any;
-	public unit: any;
-	public timeSteps: any;
-	public showPeriod: any;
-	public getLeftOffsetFromDate: any;
-	public style: any;
-	public interval: any;
-	public startTime: any;
-	public labelWidth: any;
-	public left: any;
-	public timelineWidth: any;
-	public visibleTimeStart: any;
-	public visibleTimeEnd: any;
-	public headerData: any;
+  public state: any;
+  public props: any;
+  public setState: any;
+  public canvasTimeStart: any;
+  public canvasTimeEnd: any;
+  public canvasWidth: any;
+  public unit: any;
+  public timeSteps: any;
+  public showPeriod: any;
+  public getLeftOffsetFromDate: any;
+  public style: any;
+  public interval: any;
+  public startTime: any;
+  public labelWidth: any;
+  public left: any;
+  public timelineWidth: any;
+  public visibleTimeStart: any;
+  public visibleTimeEnd: any;
+  public headerData: any;
   static propTypes = {
     //component props
     children: PropTypes.func.isRequired,
@@ -119,8 +119,10 @@ export class CustomHeader extends React.Component {
   getHeaderIntervals = ({
     canvasTimeStart,
     canvasTimeEnd,
+    canvasWidth,
     unit,
     timeSteps,
+    showPeriod,
     getLeftOffsetFromDate
   }) => {
     const intervals = []
@@ -144,7 +146,7 @@ export class CustomHeader extends React.Component {
     return intervals
   }
 
-  getRootProps = (props = {}) => {
+  getRootProps = (props: any = {}) => {
     const { style } = props
     return {
       style: Object.assign({}, style ? style : {}, {
@@ -155,7 +157,7 @@ export class CustomHeader extends React.Component {
     }
   }
 
-  getIntervalProps = (props = {}) => {
+  getIntervalProps = (props: any = {}) => {
     const { interval, style } = props
     if (!interval)
       throw new Error('you should provide interval to the prop getter')
@@ -173,7 +175,7 @@ export class CustomHeader extends React.Component {
     }
   }
 
-  getIntervalStyle = ({ left, labelWidth, style }) => {
+  getIntervalStyle = ({ left, labelWidth, style }: any) => {
     return {
       ...style,
       left,
@@ -216,11 +218,11 @@ export class CustomHeader extends React.Component {
   render() {
     const props = this.getStateAndHelpers()
     const Renderer = this.props.children
-    return <Renderer {...props}/>
+    return <Renderer {...props} />
   }
 }
 
-const CustomHeaderWrapper = ({ children, unit, headerData, height }) => (
+const CustomHeaderWrapper = ({ children, unit, headerData, height } : any) => (
   <TimelineStateConsumer>
     {({ getTimelineState, showPeriod, getLeftOffsetFromDate }) => {
       const timelineState = getTimelineState()
