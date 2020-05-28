@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import Timeline from 'react-calendar-timeline'
-import containerResizeDetector from '../../../src/resize-detector/container'
+import containerResizeDetector from '../../../resize-detector/container'
 
 // you would use this in real life:
 // import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container'
