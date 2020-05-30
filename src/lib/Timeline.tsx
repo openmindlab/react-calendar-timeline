@@ -9,6 +9,7 @@ import GroupRows from './row/GroupRows'
 import ScrollElement from './scroll/ScrollElement'
 import MarkerCanvas from './markers/MarkerCanvas'
 import windowResizeDetector from '../resize-detector/window'
+import './Timeline.scss'
 
 import {
   getMinUnit,

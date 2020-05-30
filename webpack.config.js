@@ -10,8 +10,8 @@ const config = {
   context: path.join(__dirname, './src'),
   entry: {
     demo: [
-      // `webpack-dev-server/client?http://0.0.0.0:${port}`,
-      // 'webpack/hot/only-dev-server',
+      `webpack-dev-server/client?http://0.0.0.0:${port}`,
+      'webpack/hot/only-dev-server',
       './demo/index.tsx'
     ]
   },
@@ -75,11 +75,11 @@ const config = {
   // },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: '[name].css',
     }),
   ],
   devServer: {
-    contentBase: './dist/demo',
+    contentBase: './dist',
     port
   }
 }
