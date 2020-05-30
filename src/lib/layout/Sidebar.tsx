@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import { _get, arraysEqual } from '../utility/generic'
@@ -12,15 +11,6 @@ export default class Sidebar extends Component {
 	public groupIdKey: any;
 	public groupTitleKey: any;
 	public groupRightTitleKey: any;
-  static propTypes = {
-    groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    groupHeights: PropTypes.array.isRequired,
-    keys: PropTypes.object.isRequired,
-    groupRenderer: PropTypes.func,
-    isRightSidebar: PropTypes.bool,
-  }
 
   shouldComponentUpdate(nextProps) {
     return !(

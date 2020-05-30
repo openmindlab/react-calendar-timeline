@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactContext from 'create-react-context'
 import { noop } from '../utility/generic'
 
@@ -24,9 +23,6 @@ const createId = () => {
 export class TimelineMarkersProvider extends React.Component {
 	public setState: any;
 	public props: any;
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  }
 
   handleSubscribeToMarker = newMarker => {
     newMarker = {

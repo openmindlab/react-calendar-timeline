@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/member-delimiter': 'off',
     '@typescript-eslint/type-annotation': 'off',
+    'react/no-children-prop': 'off',
     'sonarjs/no-duplicate-string': 'off',
     'sonarjs/cognitive-complexity': 'off',
     'react/prop-types': 'off',

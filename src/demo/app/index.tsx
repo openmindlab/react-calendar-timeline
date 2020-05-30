@@ -1,7 +1,6 @@
 import './styles.scss'
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import { HashRouter as Router, Route, Link, withRouter } from 'react-router-dom'
 
@@ -22,9 +21,6 @@ const demos = {
 // A simple component that shows the pathname of the current location
 class Menu extends Component {
 	public props: any;
-  static propTypes = {
-    location: PropTypes.object.isRequired
-  }
 
   render() {
     let pathname = (this.props.location || {}).pathname

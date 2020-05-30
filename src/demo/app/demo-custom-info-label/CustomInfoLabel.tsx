@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 export default function CustomInfoLabel(props) {
   const { time, groupTitle, heading } = props
@@ -36,8 +35,3 @@ export default function CustomInfoLabel(props) {
   )
 }
 
-CustomInfoLabel.propTypes = {
-  time: PropTypes.string,
-  groupTitle: PropTypes.string,
-  heading: PropTypes.string
-}

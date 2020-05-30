@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Item from './Item'
 // import ItemGroup from './ItemGroup'
@@ -19,52 +18,15 @@ const canResizeRight = (item, canResize) => {
 }
 
 export default class Items extends Component {
-	public props: any;
-	public keys: any;
-	public items: any;
-	public canvasTimeStart: any;
-	public canvasTimeEnd: any;
-	public dimensionItems: any;
-	public groups: any;
-	public itemIdKey: any;
-	public itemGroupKey: any;
-  static propTypes = {
-    groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-    items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-
-    canvasTimeStart: PropTypes.number.isRequired,
-    canvasTimeEnd: PropTypes.number.isRequired,
-    canvasWidth: PropTypes.number.isRequired,
-
-    dragSnap: PropTypes.number,
-    minResizeWidth: PropTypes.number,
-    selectedItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-    canChangeGroup: PropTypes.bool.isRequired,
-    canMove: PropTypes.bool.isRequired,
-    canResize: PropTypes.oneOf([true, false, 'left', 'right', 'both']),
-    canSelect: PropTypes.bool,
-
-    keys: PropTypes.object.isRequired,
-
-    moveResizeValidator: PropTypes.func,
-    itemSelect: PropTypes.func,
-    itemDrag: PropTypes.func,
-    itemDrop: PropTypes.func,
-    itemResizing: PropTypes.func,
-    itemResized: PropTypes.func,
-
-    onItemDoubleClick: PropTypes.func,
-    onItemContextMenu: PropTypes.func,
-
-    itemRenderer: PropTypes.func,
-    selected: PropTypes.array,
-
-    dimensionItems: PropTypes.array,
-    groupTops: PropTypes.array,
-    useResizeHandle: PropTypes.bool,
-    scrollRef: PropTypes.object
-  }
+  public props: any;
+  public keys: any;
+  public items: any;
+  public canvasTimeStart: any;
+  public canvasTimeEnd: any;
+  public dimensionItems: any;
+  public groups: any;
+  public itemIdKey: any;
+  public itemGroupKey: any;
 
   static defaultProps = {
     selected: []
@@ -86,7 +48,7 @@ export default class Items extends Component {
       nextProps.canChangeGroup === this.props.canChangeGroup &&
       nextProps.canMove === this.props.canMove &&
       nextProps.canResize === this.props.canResize &&
-      nextProps.canSelect === this.props.canSelect     
+      nextProps.canSelect === this.props.canSelect
     )
   }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import PreventClickOnDrag from '../interaction/PreventClickOnDrag'
 
 class GroupRow extends Component {
@@ -12,16 +11,6 @@ class GroupRow extends Component {
 	public clickTolerance: any;
 	public horizontalLineClassNamesForGroup: any;
 	public group: any;
-  static propTypes = {
-    onClick: PropTypes.func.isRequired,
-    onDoubleClick: PropTypes.func.isRequired,
-    onContextMenu: PropTypes.func.isRequired,
-    isEvenRow: PropTypes.bool.isRequired,
-    style: PropTypes.object.isRequired,
-    clickTolerance: PropTypes.number.isRequired,
-    group: PropTypes.object.isRequired,
-    horizontalLineClassNamesForGroup: PropTypes.func
-  }
 
   render() {
     const {

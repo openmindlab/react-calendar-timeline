@@ -1,18 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TimelineMarkersConsumer } from '../TimelineMarkersContext'
 import { TimelineMarkerType } from '../markerType'
 
 class TodayMarker extends React.Component {
 	public props: any;
 	public unsubscribe: any;
-	public getMarker: any;
-  static propTypes = {
-    subscribeMarker: PropTypes.func.isRequired,
-    updateMarker: PropTypes.func.isRequired,
-    interval: PropTypes.number,
-    children: PropTypes.func
-  }
+  public getMarker: any;
 
   static defaultProps = {
     interval: 1000 * 10 // default to ten seconds

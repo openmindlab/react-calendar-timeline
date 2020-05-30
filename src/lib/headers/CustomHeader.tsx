@@ -1,10 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TimelineHeadersConsumer } from './HeadersContext'
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
 import { iterateTimes, calculateXPositionForTime } from '../utility/calendar'
+import { Unit, CustomHeaderPropsChildrenFnProps } from '../Timeline'
 
-export class CustomHeader extends React.Component {
+
+export interface CustomHeaderProps<Data> {
+  unit?: Unit;
+  headerData?: Data;
+  height?: number;
+  children: (props?: CustomHeaderPropsChildrenFnProps<Data>) => React.ReactNode;
+}
+
+export class CustomHeader<Data = any> extends React.Component<CustomHeaderProps<Data>> {
   public state: any;
   public props: any;
   public setState: any;
@@ -24,22 +32,7 @@ export class CustomHeader extends React.Component {
   public visibleTimeStart: any;
   public visibleTimeEnd: any;
   public headerData: any;
-  static propTypes = {
-    //component props
-    children: PropTypes.func.isRequired,
-    unit: PropTypes.string.isRequired,
-    //Timeline context
-    timeSteps: PropTypes.object.isRequired,
-    visibleTimeStart: PropTypes.number.isRequired,
-    visibleTimeEnd: PropTypes.number.isRequired,
-    canvasTimeStart: PropTypes.number.isRequired,
-    canvasTimeEnd: PropTypes.number.isRequired,
-    canvasWidth: PropTypes.number.isRequired,
-    showPeriod: PropTypes.func.isRequired,
-    headerData: PropTypes.object,
-    getLeftOffsetFromDate: PropTypes.func.isRequired,
-    height: PropTypes.number.isRequired,
-  }
+
   constructor(props) {
     super(props)
     const {
@@ -222,10 +215,10 @@ export class CustomHeader extends React.Component {
   }
 }
 
-const CustomHeaderWrapper = ({ children, unit, headerData, height } : any) => (
+const CustomHeaderWrapper = ({ children, unit, headerData, height }: any) => (
   <TimelineStateConsumer>
     {({ getTimelineState, showPeriod, getLeftOffsetFromDate }) => {
-      const timelineState : any = getTimelineState()
+      const timelineState: any = getTimelineState()
       return (
         <TimelineHeadersConsumer>
           {({ timeSteps }) => (
@@ -245,13 +238,6 @@ const CustomHeaderWrapper = ({ children, unit, headerData, height } : any) => (
     }}
   </TimelineStateConsumer>
 )
-
-CustomHeaderWrapper.propTypes = {
-  children: PropTypes.func.isRequired,
-  unit: PropTypes.string,
-  headerData: PropTypes.object,
-  height: PropTypes.number,
-}
 
 CustomHeaderWrapper.defaultProps = {
   height: 30,

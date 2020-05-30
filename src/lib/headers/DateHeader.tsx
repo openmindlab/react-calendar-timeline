@@ -1,31 +1,30 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
 import CustomHeader from './CustomHeader'
 import { getNextUnit } from '../utility/calendar'
 import { defaultHeaderFormats } from '../default-config'
 import memoize from 'memoize-one'
 import { CustomDateHeader } from './CustomDateHeader'
+import { Moment } from 'moment'
+import { Unit, IntervalRenderer } from '../Timeline'
+import { SidebarHeaderChildrenFnProps } from './SidebarHeader'
 
-class DateHeader extends React.Component {
+export interface DateHeaderProps<Data> {
+  style?: React.CSSProperties;
+  className?: string;
+  unit?: Unit | 'primaryHeader';
+  labelFormat?: string | (([startTime, endTime]: [Moment, Moment], unit: Unit, labelWidth: number) => string);
+  intervalRenderer?: (props?: IntervalRenderer<Data>) => React.ReactNode;
+  headerData?: Data;
+  children?: (props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode;
+  height?: number;
+}
+
+class DateHeader<Data = any> extends React.Component<DateHeaderProps<Data>>{
 	public props: any;
 	public labelFormat: any;
 	public headerData: any;
 	public height: any;
-  static propTypes = {
-    unit: PropTypes.string,
-    style: PropTypes.object,
-    className: PropTypes.string,
-    timelineUnit: PropTypes.string,
-    labelFormat: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
-      PropTypes.string
-    ]).isRequired,
-    intervalRenderer: PropTypes.func,
-    headerData: PropTypes.object,
-    height: PropTypes.number
-  }
 
   getHeaderUnit = () => {
     if (this.props.unit === 'primaryHeader') {
@@ -123,20 +122,6 @@ const DateHeaderWrapper = ({
     }}
   </TimelineStateConsumer>
 )
-
-DateHeaderWrapper.propTypes = {
-  style: PropTypes.object,
-  className: PropTypes.string,
-  unit: PropTypes.string,
-  labelFormat: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
-    PropTypes.string
-  ]),
-  intervalRenderer: PropTypes.func,
-  headerData: PropTypes.object,
-  height: PropTypes.number
-}
 
 DateHeaderWrapper.defaultProps = {
   labelFormat: formatLabel

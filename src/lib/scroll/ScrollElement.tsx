@@ -1,5 +1,4 @@
 import React, { Component, CSSProperties } from 'react'
-import PropTypes from 'prop-types'
 import { getParentPosition } from '../utility/dom-helpers'
 
 class ScrollElement extends Component {
@@ -19,17 +18,6 @@ class ScrollElement extends Component {
 	public height: any;
 	public children: any;
 	public isDragging: any;
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    traditionalZoom: PropTypes.bool.isRequired,
-    scrollRef: PropTypes.func.isRequired,
-    isInteractingWithItem: PropTypes.bool.isRequired,
-    onZoom: PropTypes.func.isRequired,
-    onWheelZoom: PropTypes.func.isRequired,
-    onScroll: PropTypes.func.isRequired
-  }
 
   constructor() {
     // @ts-ignore

@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   createMarkerStylesWithLeftOffset,
-  createDefaultRenderer
+  createDefaultRenderer,
+  MarkerProps
 } from './shared'
 import { MarkerCanvasConsumer } from '../MarkerCanvasContext'
 
 const defaultRenderer = createDefaultRenderer('default-cursor-marker')
+
+export type CursorMarkerProps = Omit<MarkerProps, 'date'>;
 
 /**
  * CursorMarker implementation subscribes to 'subscribeToCanvasMouseOver' on mount.
@@ -18,7 +21,7 @@ const defaultRenderer = createDefaultRenderer('default-cursor-marker')
  *  isCursorOverCanvas - whether the user cursor is over the canvas. This is set to 'false'
  *  when the user mouseleaves the element
  */
-class CursorMarker extends React.Component {
+class CursorMarker extends React.Component<CursorMarkerProps> {
 	public state: any;
 	public setState: any;
 	public unsubscribe: any;

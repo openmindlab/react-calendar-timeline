@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import GroupRow from './GroupRow'
 
@@ -13,17 +12,6 @@ export default class GroupRows extends Component {
 	public groups: any;
 	public horizontalLineClassNamesForGroup: any;
 	public onRowContextClick: any;
-  static propTypes = {
-    canvasWidth: PropTypes.number.isRequired,
-    lineCount: PropTypes.number.isRequired,
-    groupHeights: PropTypes.array.isRequired,
-    onRowClick: PropTypes.func.isRequired,
-    onRowDoubleClick: PropTypes.func.isRequired,
-    clickTolerance: PropTypes.number.isRequired,
-    groups: PropTypes.array.isRequired,
-    horizontalLineClassNamesForGroup: PropTypes.func,
-    onRowContextClick: PropTypes.func.isRequired,
-  }
 
   shouldComponentUpdate(nextProps) {
     return !(

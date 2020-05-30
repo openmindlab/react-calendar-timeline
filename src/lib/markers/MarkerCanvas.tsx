@@ -1,5 +1,4 @@
 import React, { CSSProperties } from 'react'
-import PropTypes from 'prop-types'
 import { MarkerCanvasProvider } from './MarkerCanvasContext'
 import TimelineMarkersRenderer from './TimelineMarkersRenderer'
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
@@ -23,10 +22,6 @@ class MarkerCanvas extends React.Component {
 	public props: any;
 	public pageX: any;
 	public containerLeft: any;
-  static propTypes = {
-    getDateFromLeftOffsetPosition: PropTypes.func.isRequired,
-    children: PropTypes.node
-  }
 
   handleMouseMove = evt => {
     if (this.subscription != null) {

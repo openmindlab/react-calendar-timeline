@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactContext from 'create-react-context'
 import {
   calculateXPositionForTime,
@@ -42,18 +41,6 @@ export class TimelineStateProvider extends React.Component {
 	public canvasWidth: any;
 	public timelineUnit: any;
 	public timelineWidth: any;
-  /* eslint-disable react/no-unused-prop-types */
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-    visibleTimeStart: PropTypes.number.isRequired,
-    visibleTimeEnd: PropTypes.number.isRequired,
-    canvasTimeStart: PropTypes.number.isRequired,
-    canvasTimeEnd: PropTypes.number.isRequired,
-    canvasWidth: PropTypes.number.isRequired,
-    showPeriod: PropTypes.func.isRequired,
-    timelineUnit: PropTypes.string.isRequired,
-    timelineWidth: PropTypes.number.isRequired,
-  }
 
   constructor(props) {
     super(props)

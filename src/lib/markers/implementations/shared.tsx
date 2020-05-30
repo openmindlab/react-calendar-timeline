@@ -28,3 +28,14 @@ export const createDefaultRenderer = dataTestidValue => {
     return <div style={styles} data-testid={dataTestidValue} />
   }
 }
+
+export interface CustomMarkerChildrenProps {
+  styles: React.CSSProperties;
+  date: number;
+}
+
+export interface MarkerProps {
+  date: Date | number;
+  children?: (props: CustomMarkerChildrenProps) => React.ReactNode;
+}
+

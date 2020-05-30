@@ -1,15 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TimelineMarkersConsumer } from '../TimelineMarkersContext'
 import { TimelineMarkerType } from '../markerType'
 
 class CursorMarker extends React.Component {
 	public props: any;
 	public unsubscribe: any;
-  static propTypes = {
-    subscribeMarker: PropTypes.func.isRequired,
-    children: PropTypes.func
-  }
 
   componentDidMount() {
     const { unsubscribe } = this.props.subscribeMarker({

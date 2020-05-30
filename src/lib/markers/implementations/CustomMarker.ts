@@ -1,5 +1,5 @@
+import { MarkerProps } from './shared';
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
   createMarkerStylesWithLeftOffset,
   createDefaultRenderer
@@ -11,14 +11,9 @@ const defaultCustomMarkerRenderer = createDefaultRenderer(
 /**
  * CustomMarker that is placed based on passed in date prop
  */
-class CustomMarker extends React.Component {
-	public props: any;
-	public date: any;
-  static propTypes = {
-    getLeftOffsetFromDate: PropTypes.func.isRequired,
-    renderer: PropTypes.func,
-    date: PropTypes.number.isRequired
-  }
+class CustomMarker extends React.Component<MarkerProps> {
+  public props: any;
+  public date: any;
 
   static defaultProps = {
     renderer: defaultCustomMarkerRenderer

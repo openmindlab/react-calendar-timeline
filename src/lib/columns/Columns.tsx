@@ -1,19 +1,8 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import { iterateTimes } from '../utility/calendar'
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
 
-const passThroughPropTypes = {
-  canvasTimeStart: PropTypes.number.isRequired,
-  canvasTimeEnd: PropTypes.number.isRequired,
-  canvasWidth: PropTypes.number.isRequired,
-  lineCount: PropTypes.number.isRequired,
-  minUnit: PropTypes.string.isRequired,
-  timeSteps: PropTypes.object.isRequired,
-  height: PropTypes.number.isRequired,
-  verticalLineClassNamesForTime: PropTypes.func
-}
 
 class Columns extends Component {
 	public props: any;
@@ -25,10 +14,6 @@ class Columns extends Component {
 	public height: any;
 	public verticalLineClassNamesForTime: any;
 	public getLeftOffsetFromDate: any;
-  static propTypes = {
-    ...passThroughPropTypes,
-    getLeftOffsetFromDate: PropTypes.func.isRequired
-  }
 
   shouldComponentUpdate(nextProps) {
     return !(
@@ -117,8 +102,5 @@ const ColumnsWrapper = ({ ...props }) => {
   )
 }
 
-ColumnsWrapper.defaultProps = {
-  ...passThroughPropTypes
-}
 
 export default ColumnsWrapper

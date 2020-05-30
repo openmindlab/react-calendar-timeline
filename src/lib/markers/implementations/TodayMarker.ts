@@ -1,25 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
   createMarkerStylesWithLeftOffset,
   createDefaultRenderer
 } from './shared'
+import { MarkerProps } from './shared';
+
+export interface TodayMarkerProps extends MarkerProps {
+  interval?: number;
+}
 
 const defaultRenderer = createDefaultRenderer('default-today-line')
 
 /** Marker that is placed based on current date.  This component updates itself on
  * a set interval, dictated by the 'interval' prop.
  */
-class TodayMarker extends React.Component {
+class TodayMarker extends React.Component<TodayMarkerProps> {
 	public intervalToken: any;
 	public props: any;
 	public setState: any;
 	public date: any;
-  static propTypes = {
-    getLeftOffsetFromDate: PropTypes.func.isRequired,
-    renderer: PropTypes.func,
-    interval: PropTypes.number.isRequired
-  }
 
   static defaultProps = {
     renderer: defaultRenderer

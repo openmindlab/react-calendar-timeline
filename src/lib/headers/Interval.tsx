@@ -1,9 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { getNextUnit } from '../utility/calendar'
 import { composeEvents } from '../utility/events'
+import { Unit } from '../Timeline';
 
-class Interval extends React.PureComponent {
+type IntervalProps = {
+  intervalRenderer: any,
+  unit: Unit,
+  interval: any,
+  showPeriod: any,
+  intervalText: string,
+  primaryHeader: boolean,
+  getIntervalProps: any,
+  headerData: any
+}
+
+class Interval extends React.PureComponent<IntervalProps> {
   public props: any;
   public primaryHeader: any;
   public interval: any;
@@ -12,16 +23,6 @@ class Interval extends React.PureComponent {
   public intervalText: any;
   public intervalRenderer: any;
   public headerData: any;
-  static propTypes = {
-    intervalRenderer: PropTypes.func,
-    unit: PropTypes.string.isRequired,
-    interval: PropTypes.object.isRequired,
-    showPeriod: PropTypes.func.isRequired,
-    intervalText: PropTypes.string.isRequired,
-    primaryHeader: PropTypes.bool.isRequired,
-    getIntervalProps: PropTypes.func.isRequired,
-    headerData: PropTypes.object
-  }
 
   onIntervalClick = () => {
     const { primaryHeader, interval, unit, showPeriod } = this.props

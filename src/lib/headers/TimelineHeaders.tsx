@@ -1,25 +1,24 @@
 import React from 'react'
 import classNames from 'classnames'
 import { TimelineHeadersConsumer } from './HeadersContext'
-import PropTypes from 'prop-types'
 import SidebarHeader from './SidebarHeader'
 import { RIGHT_VARIANT } from './constants'
-class TimelineHeaders extends React.Component {
+
+
+export interface TimelineHeadersProps {
+  style?: React.CSSProperties;
+  className?: string;
+  calendarHeaderStyle?: React.CSSProperties;
+  calendarHeaderClassName?: string;
+  headerRef?: React.Ref<any>;
+}
+
+
+class TimelineHeaders extends React.Component<TimelineHeadersProps> {
 	public props: any;
 	public leftSidebarWidth: any;
 	public rightSidebarWidth: any;
 	public calendarHeaderStyle: any;
-  static propTypes = {
-    registerScroll: PropTypes.func.isRequired,
-    leftSidebarWidth: PropTypes.number.isRequired,
-    rightSidebarWidth: PropTypes.number.isRequired,
-    style: PropTypes.object,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    calendarHeaderStyle: PropTypes.object,
-    calendarHeaderClassName: PropTypes.string,
-    headerRef: PropTypes.func
-  }
 
   constructor(props) {
     super(props)
@@ -135,14 +134,6 @@ const TimelineHeadersWrapper = ({
     }}
   </TimelineHeadersConsumer>
 )
-
-TimelineHeadersWrapper.propTypes = {
-  style: PropTypes.object,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  calendarHeaderStyle: PropTypes.object,
-  calendarHeaderClassName: PropTypes.string
-}
 
 TimelineHeadersWrapper.secretKey = "TimelineHeaders"
 

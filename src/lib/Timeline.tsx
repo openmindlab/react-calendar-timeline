@@ -1,52 +1,39 @@
-import PropTypes from 'prop-types'
+import { Moment } from 'moment'
 import React, { Component } from 'react'
-import moment from 'moment'
-
-import Items from './items/Items'
-import Sidebar from './layout/Sidebar'
-import Columns from './columns/Columns'
-import GroupRows from './row/GroupRows'
-import ScrollElement from './scroll/ScrollElement'
-import MarkerCanvas from './markers/MarkerCanvas'
+import PropTypes from 'prop-types'
 import windowResizeDetector from '../resize-detector/window'
-import './Timeline.scss'
-
-import {
-  getMinUnit,
-  getNextUnit,
-  calculateTimeForXPosition,
-  calculateScrollCanvas,
-  getCanvasBoundariesFromVisibleTime,
-  getCanvasWidth,
-  stackTimelineItems
-} from './utility/calendar'
-import { _get, _length } from './utility/generic'
-import {
-  defaultKeys,
-  defaultTimeSteps,
-  defaultHeaderLabelFormats,
-  defaultSubHeaderLabelFormats
-} from './default-config'
-import { TimelineStateProvider } from './timeline/TimelineStateContext'
-import { TimelineMarkersProvider } from './markers/TimelineMarkersContext'
+import Columns from './columns/Columns'
+import { defaultHeaderLabelFormats, defaultKeys, defaultSubHeaderLabelFormats, defaultTimeSteps } from './default-config'
+import DateHeader from './headers/DateHeader'
 import { TimelineHeadersProvider } from './headers/HeadersContext'
 import TimelineHeaders from './headers/TimelineHeaders'
-import DateHeader from './headers/DateHeader'
-import { Moment } from 'moment';
-import SidebarHeader from './headers/SidebarHeader'
+import Items from './items/Items'
+import Sidebar from './layout/Sidebar'
+import MarkerCanvas from './markers/MarkerCanvas'
+import { TimelineMarkersProvider } from './markers/TimelineMarkersContext'
+import GroupRows from './row/GroupRows'
+import ScrollElement from './scroll/ScrollElement'
+import './Timeline.scss'
+import { TimelineStateProvider } from './timeline/TimelineStateContext'
+import { calculateScrollCanvas, calculateTimeForXPosition, getCanvasBoundariesFromVisibleTime, getCanvasWidth, getMinUnit, stackTimelineItems } from './utility/calendar'
+import { _get, _length } from './utility/generic'
 
+export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 
-type Id = number | string;
+export interface Interval {
+  startTime: Moment;
+  endTime: Moment;
+}
 
 export interface TimelineGroupBase {
-  id: Id;
+  id: number | string;
   title: React.ReactNode;
   rightTitle?: React.ReactNode;
 }
 
 export interface TimelineItemBase<DateType> {
-  id: Id;
-  group: Id;
+  id: number | string;
+  group: number | string;
   title?: React.ReactNode;
   start_time: DateType;
   end_time: DateType;
@@ -124,7 +111,7 @@ export interface LabelFormat {
 }
 
 export interface ItemRendererGetItemPropsReturnType {
-  key: Id;
+  key: number | string;
   ref: React.Ref<any>;
   className: string;
   onMouseDown: React.MouseEventHandler;
@@ -166,7 +153,7 @@ export interface ReactCalendarItemRendererProps<
   getItemProps: (
     props: GetItemsProps,
   ) => {
-    key: Id;
+    key: number | string;
     ref: React.Ref<any>;
     className: string;
     onMouseDown: React.MouseEventHandler;
@@ -187,7 +174,7 @@ export interface ReactCalendarGroupRendererProps<CustomGroup extends TimelineGro
 
 export interface OnItemDragObjectBase {
   eventType: 'move' | 'resize';
-  itemId: Id;
+  itemId: number | string;
   time: number;
 }
 
@@ -223,80 +210,25 @@ export interface TimelineTimeSteps {
   year: number;
 }
 
-export class TimelineMarkers extends React.Component { }
-
-export interface CustomMarkerChildrenProps {
-  styles: React.CSSProperties;
-  date: number;
-}
-export interface MarkerProps {
-  date: Date | number;
-  children?: (props: CustomMarkerChildrenProps) => React.ReactNode;
-}
-
-export class CustomMarker extends React.Component<MarkerProps> { }
-
-export interface TodayMarkerProps extends MarkerProps {
-  interval?: number;
-}
-export class TodayMarker extends React.Component<TodayMarkerProps> { }
-
-export type CursorMarkerProps = Omit<MarkerProps, 'date'>;
-export class CursorMarker extends React.Component<CursorMarkerProps> { }
-
-export interface TimelineHeadersProps {
-  style?: React.CSSProperties;
-  className?: string;
-  calendarHeaderStyle?: React.CSSProperties;
-  calendarHeaderClassName?: string;
-  headerRef?: React.Ref<any>;
-}
-
-export type TimelineHeaderProps = TimelineHeadersProps;
-
-export interface SidebarHeaderChildrenFnProps<Data> {
-  getRootProps: (propsToOverride?: { style: React.CSSProperties }) => { style: React.CSSProperties };
-  data: Data;
-}
-
-export interface SidebarHeaderProps<Data> {
-  variant?: 'left' | 'right';
-  headerData?: Data;
-  children: (props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode;
-}
-// export class SidebarHeader<Data = any> extends React.Component<SidebarHeaderProps<Data>> { }
-
-export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 
 export interface IntervalContext {
   interval: { startTime: number; endTime: number; labelWidth: number; left: number };
   intervalText: string;
 }
+
 export interface GetIntervalProps {
   interval?: Interval;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler;
 }
+
 export interface IntervalRenderer<Data> {
   intervalContext: IntervalContext;
   getIntervalProps: (props?: GetIntervalProps) => Required<GetIntervalProps> & { key: string | number };
   data?: Data;
 }
-export interface DateHeaderProps<Data> {
-  style?: React.CSSProperties;
-  className?: string;
-  unit?: Unit | 'primaryHeader';
-  labelFormat?: string | (([startTime, endTime]: [Moment, Moment], unit: Unit, labelWidth: number) => string);
-  intervalRenderer?: (props?: IntervalRenderer<Data>) => React.ReactNode;
-  headerData?: Data;
-  children?: (props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode;
-  height?: number;
-}
 
-export interface Interval {
-  startTime: Moment;
-  endTime: Moment;
-}
+
 export interface HeaderContext {
   intervals: { startTime: Moment; endTime: Moment }[];
   unit: string;
@@ -309,13 +241,6 @@ export interface CustomHeaderPropsChildrenFnProps<Data> {
   showPeriod: (startDate: Moment | number, endDate: Moment | number) => void;
   data: Data;
 }
-export interface CustomHeaderProps<Data> {
-  unit?: Unit;
-  headerData?: Data;
-  height?: number;
-  children: (props?: CustomHeaderPropsChildrenFnProps<Data>) => React.ReactNode;
-}
-export class CustomHeader<Data = any> extends React.Component<CustomHeaderProps<Data>> { }
 
 export type ReactCalendarTimelineProps<
   CustomItem extends TimelineItemBase<any> = TimelineItemBase<number>,
@@ -350,20 +275,20 @@ export type ReactCalendarTimelineProps<
     timeSteps?: TimelineTimeSteps;
     scrollRef?: React.Ref<any>;
     onItemDrag?(itemDragObject: OnItemDragObjectMove | OnItemDragObjectResize): void;
-    onItemMove?(itemId: Id, dragTime: number, newGroupOrder: number): void;
-    onItemResize?(itemId: Id, endTimeOrStartTime: number, edge: 'left' | 'right'): void;
-    onItemSelect?(itemId: Id, e: any, time: number): void;
+    onItemMove?(itemId: number | string, dragTime: number, newGroupOrder: number): void;
+    onItemResize?(itemId: number | string, endTimeOrStartTime: number, edge: 'left' | 'right'): void;
+    onItemSelect?(itemId: number | string, e: any, time: number): void;
     onItemDeselect?(e: React.SyntheticEvent): void;
-    onItemClick?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-    onItemDoubleClick?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-    onItemContextMenu?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-    onCanvasClick?(groupId: Id, time: number, e: React.SyntheticEvent): void;
-    onCanvasDoubleClick?(groupId: Id, time: number, e: React.SyntheticEvent): void;
-    onCanvasContextMenu?(groupId: Id, time: number, e: React.SyntheticEvent): void;
+    onItemClick?(itemId: number | string, e: React.SyntheticEvent, time: number): void;
+    onItemDoubleClick?(itemId: number | string, e: React.SyntheticEvent, time: number): void;
+    onItemContextMenu?(itemId: number | string, e: React.SyntheticEvent, time: number): void;
+    onCanvasClick?(groupId: number | string, time: number, e: React.SyntheticEvent): void;
+    onCanvasDoubleClick?(groupId: number | string, time: number, e: React.SyntheticEvent): void;
+    onCanvasContextMenu?(groupId: number | string, time: number, e: React.SyntheticEvent): void;
     onZoom?(timelineContext: TimelineContext): void;
     moveResizeValidator?(
       action: 'move' | 'resize',
-      itemId: Id,
+      itemId: number | string,
       time: number,
       resizeEdge: 'left' | 'right',
     ): number;
@@ -413,7 +338,10 @@ export type ReactCalendarTimelineProps<
     headerRef?: React.Ref<any>;
   }
 
-export default class ReactCalendarTimeline extends Component {
+export default class ReactCalendarTimeline<
+  CustomItem extends TimelineItemBase<any> = TimelineItemBase<number>,
+  CustomGroup extends TimelineGroupBase = TimelineGroupBase
+  > extends Component<ReactCalendarTimelineProps<CustomItem, CustomGroup>>  {
   public state: any;
   public props: any;
   public lastTouchDistance: any;
@@ -442,7 +370,7 @@ export default class ReactCalendarTimeline extends Component {
   public timeSteps: any;
   public traditionalZoom: any;
   public draggingItem: any;
-  
+
 
   static defaultProps: ReactCalendarTimelineProps = {
     groups: [],
@@ -552,7 +480,7 @@ export default class ReactCalendarTimeline extends Component {
     }
   }
 
-  constructor(props: ReactCalendarTimelineProps) {
+  constructor(props: ReactCalendarTimelineProps<CustomItem, CustomGroup>) {
     super(props)
 
     this.getSelected = this.getSelected.bind(this)

@@ -1,18 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TimelineHeadersConsumer } from './HeadersContext'
 import { LEFT_VARIANT, RIGHT_VARIANT } from './constants'
 
-class SidebarHeader extends React.PureComponent {
+
+
+export interface SidebarHeaderChildrenFnProps<Data> {
+  getRootProps: (propsToOverride?: { style: React.CSSProperties }) => { style: React.CSSProperties };
+  data: Data;
+}
+
+export interface SidebarHeaderProps<Data> {
+  variant?: 'left' | 'right';
+  headerData?: Data;
+  children: (props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode;
+}
+
+
+class SidebarHeader<Data = any> extends React.PureComponent<SidebarHeaderProps<Data>> {
   public props: any;
   public style: any;
-  static propTypes : any = {
-    children: PropTypes.func.isRequired,
-    rightSidebarWidth: PropTypes.number,
-    leftSidebarWidth: PropTypes.number.isRequired,
-    variant: PropTypes.string,
-    headerData: PropTypes.object
-  }
 
   getRootProps = (props: any = {}) => {
     const { style } = props
@@ -57,12 +63,6 @@ const SidebarWrapper = ({ children, variant, headerData } : any) => (
     }}
   </TimelineHeadersConsumer>
 )
-
-SidebarWrapper.propTypes = {
-  children: PropTypes.func.isRequired,
-  variant: PropTypes.string,
-  headerData: PropTypes.object
-}
 
 SidebarWrapper.defaultProps = {
   variant: LEFT_VARIANT,

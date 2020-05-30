@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 class PreventClickOnDrag extends Component {
 	public originClickX: any;
 	public props: any;
 	public cancelClick: any;
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-    onClick: PropTypes.func.isRequired,
-    clickTolerance: PropTypes.number.isRequired
-  }
 
   handleMouseDown = evt => {
     this.originClickX = evt.clientX
