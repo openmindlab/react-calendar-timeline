@@ -11,6 +11,7 @@ gh-pages
 package-lock.json
 # vscode stuff
 .vscode
+/dist
 
 # code coverage
 coverage
