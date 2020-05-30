@@ -79,7 +79,7 @@ const config = {
     }),
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: './src/demo',
     port
   }
 }
