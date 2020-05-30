@@ -1,6 +1,7 @@
 const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const port = process.env.PORT || 8888
 
@@ -20,7 +21,10 @@ const config = {
     chunkFilename: '[name].bundle.js',
     filename: '[name].bundle.js'
   },
-  mode: 'development',
+  watchOptions: {
+    aggregateTimeout: 100,
+    ignored: /node_modules/,
+  },
   module: {
     rules: [
       {
@@ -69,8 +73,13 @@ const config = {
   //     )
   //   }
   // },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
+  ],
   devServer: {
-    contentBase: './demo',
+    contentBase: './dist/demo',
     port
   }
 }
